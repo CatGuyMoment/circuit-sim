@@ -80,7 +80,7 @@ def parallel(*components):
     return constructor, get_resistance
 
 
-
+############# CIRCUIT #####################
 
 series(
     parallel(
