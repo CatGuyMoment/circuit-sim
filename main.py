@@ -80,19 +80,17 @@ def parallel(*components):
     return constructor, get_resistance
 
 
+def circuitCloser(circuit):
+    def constructor(voltage):
+        return circuit[0](voltage)
+    return constructor
+
 ############# CIRCUIT #####################
 
-series(
-    parallel(
-        resist(10),
-        volt_probe('1')
-    ),
-    
-    parallel(
-        series(amp_probe('1'),resist(10)),
-        resist(10),
+circuitCloser(
+    series(
         resist(10)
     )
-)[0](9)
+)(9)
 
         
