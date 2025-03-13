@@ -20,9 +20,9 @@ def wire(distance,resistivity,surface):
 
 
 
-def amp_probe():
+def amp_probe(tag=''):
     def constructor(voltage):
-        print(voltage * PROBE_INTERFERENCE)
+        print(f'AMPEGAGE {tag}:',voltage * PROBE_INTERFERENCE)
     
     def get_resistance():
         return 1/PROBE_INTERFERENCE
@@ -30,9 +30,9 @@ def amp_probe():
     return constructor, get_resistance
 
 
-def volt_probe():
+def volt_probe(tag=''):
     def constructor(voltage):
-        print(voltage)
+        print(f'VOLTAGE {tag}:', voltage)
     
     def get_resistance():
         return PROBE_INTERFERENCE
@@ -85,11 +85,11 @@ def parallel(*components):
 series(
     parallel(
         resist(10),
-        volt_probe()
+        volt_probe('1')
     ),
     
     parallel(
-        series(amp_probe(),resist(10)),
+        series(amp_probe('1'),resist(10)),
         resist(10),
         resist(10)
     )
