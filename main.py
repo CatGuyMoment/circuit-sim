@@ -1,7 +1,7 @@
 
 PROBE_INTERFERENCE = 10**10
 
-
+## what react does to a man... functional hell......
 
 def resist(resistance):
     def constructor(voltage):
